@@ -42,7 +42,7 @@ app.post("",async(req,res)=>{
 
     }
     catch(e){
-        return res.status(401).send(e.message)
+        return res.send(e.message)
     }
 })
 
@@ -64,7 +64,7 @@ app.patch("/:id",async(req,res)=>{
         return res.status(201).send("User details updated.")
     }
     catch(e){
-        return res.status(401).send(e.message)
+        return res.send(e.message)
     }
 })
 
