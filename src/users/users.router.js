@@ -35,8 +35,8 @@ app.post("",async(req,res)=>{
             return res.status(401).send("Email should be unique.")
         }
         else{
-            await User.create(req.body);
-            return res.status(201).send("User Created Successfully.")
+           let u= await User.create(req.body);
+            return res.status(201).send(u)
         }
 
     }
