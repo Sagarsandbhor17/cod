@@ -4,7 +4,8 @@ var bodyParser = require("body-parser");
 const cors=require("cors");
 const dbConnect=require('./config/db');
 
-const dashboard=require('./dash/dash.router')
+const dashboard=require('./dash/dash.router');
+const user=require("./users/users.router");
 
 dotenv.config();
 let PORT =process.env.PORT || 8080;
@@ -16,7 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 app.use(express.json());
 
-app.use("/data",dashboard)
+app.use("/data",dashboard);
+app.use("/users",user)
 
 app.get('/' , (req , res) => {
   res.send("<div>Welcome to dashboard backend.</div>")
