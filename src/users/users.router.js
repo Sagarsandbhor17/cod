@@ -4,8 +4,10 @@ const User=require("./users.model");
 
 
 app.get("",async(req,res)=>{
+    const page=req.query.page || 1;
+    const size=req.query.size || 10;
     try{
-        let users=await User.find();
+        let users=await User.find().skip((page-1)*size).limit(size);
         return res.send(users);
     }
     catch(e){
