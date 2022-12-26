@@ -31,7 +31,7 @@ app.post("",async(req,res)=>{
     const {email}=req.body;
     try{
         let u=await User.find({email});
-        if(!u){
+        if(u){
             return res.status(401).send("Email should be unique.")
         }
         else{
