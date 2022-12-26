@@ -29,15 +29,16 @@ catch(e){
 
 app.post("",async(req,res)=>{
     const {email}=req.body;
+    let u=await User.findOne({email});
+    
     try{
-        let u=await User.find({email});
-        if(u){
-            return res.status(401).send("Email should be unique.")
-        }
-        else{
-           let u= await User.create(req.body);
-            return res.status(201).send(u)
-        }
+    if(u!==null){
+        return res.status(401).send("Email Shoul be unique");
+    }
+    else{
+        let user=await User.create(req.body);
+        return res.status(201).send(user)
+    }
 
     }
     catch(e){
