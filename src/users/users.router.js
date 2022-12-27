@@ -15,11 +15,6 @@ app.get("",async(req,res)=>{
     }
 
       try{
-
-    if(q!=={}){
-        let users=await User.find(q);
-        return res.send(users);
-    }
         let users=await User.find(q).skip((page-1)*size).limit(size);
         return res.send(users);
     }
