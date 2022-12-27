@@ -7,7 +7,7 @@ app.get("",async(req,res)=>{
     const page=req.query.page || 1;
     const size=req.query.size || 10;
     let q;
-    if(req.query.name===undefined){
+    if(req.query.name==='undefined'){
         q={}
     }
     else{
@@ -15,6 +15,7 @@ app.get("",async(req,res)=>{
     }
 
       try{
+        console.log(q)
         let users=await User.find(q).skip((page-1)*size).limit(size);
         return res.send(users);
     }
