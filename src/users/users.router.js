@@ -6,8 +6,16 @@ const User=require("./users.model");
 app.get("",async(req,res)=>{
     const page=req.query.page || 1;
     const size=req.query.size || 10;
-    try{
-        let users=await User.find().skip((page-1)*size).limit(size);
+    let q;
+    if(req.query.name===undefined){
+        q={}
+    }
+    else{
+        q={name:req.query.name};
+    }
+
+      try{
+        let users=await User.find(q).skip((page-1)*size).limit(size);
         return res.send(users);
     }
     catch(e){
