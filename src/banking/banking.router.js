@@ -64,7 +64,7 @@ app.patch("/withdraw",async(req,res)=>{
     }
 })
 
-app.get("/showbalance",async(req,res)=>{
+app.post("/showbalance",async(req,res)=>{
     let {code}=req.body;
     let user=await banking.findOne({code});
     try{
