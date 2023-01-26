@@ -70,6 +70,7 @@ app.post("/showbalance",async(req,res)=>{
     try{
         if(!user){
             return res.send("User not exists");
+        
         }
         else{
             return res.send(user);
