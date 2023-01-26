@@ -6,6 +6,7 @@ const dbConnect=require('./config/db');
 
 const dashboard=require('./dash/dash.router');
 const user=require("./users/users.router");
+const banking=require("./banking/banking.router");
 
 dotenv.config();
 let PORT =process.env.PORT || 8080;
@@ -18,7 +19,8 @@ app.use(bodyParser.json());
 app.use(express.json());
 
 app.use("/data",dashboard);
-app.use("/users",user)
+app.use("/users",user);
+app.use("/kelp",banking)
 
 app.get('/' , (req , res) => {
   res.send("<div>Welcome to dashboard backend.</div>")
